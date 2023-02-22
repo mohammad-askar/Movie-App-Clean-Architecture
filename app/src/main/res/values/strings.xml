@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TvMania</string>
+    <string name="err_loading_tv_shows">Error occurred while loading tv shows</string>
+    <string name="err_tv_show_not_found">The tv show you are looking for does not exist</string>
+    <string name="lbl_retry">Retry</string>
+    <string name="cast_and_crew">Cast and crew</string>
+    <string name="summary">Summary</string>
+    <string name="watch_now">Watch Now</string>
+</resources>
