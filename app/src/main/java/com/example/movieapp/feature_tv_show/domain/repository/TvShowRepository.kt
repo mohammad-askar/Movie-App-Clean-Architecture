@@ -20,5 +20,5 @@ interface TvShowRepository {
      *  @param id [Int] the id of the TvShow
      *  @return [Recourse]<[TvShowDetail]>
      */
-    fun getTvShowDetail(id: Long): Recourse<TvShowDetail>
+    suspend fun getTvShowDetail(id: Long): Recourse<TvShowDetail?>
 }

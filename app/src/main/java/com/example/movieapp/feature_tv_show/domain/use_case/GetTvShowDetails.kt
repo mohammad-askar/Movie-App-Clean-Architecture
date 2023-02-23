@@ -6,7 +6,7 @@ import com.example.movieapp.util.Recourse
 
 class GetTvShowDetails(private val repository: TvShowRepository) {
 
-    suspend operator fun invoke(id: Long): Recourse<TvShowDetail> {
+    suspend operator fun invoke(id: Long): Recourse<TvShowDetail?> {
         return repository.getTvShowDetail(id = id)
     }
 }
