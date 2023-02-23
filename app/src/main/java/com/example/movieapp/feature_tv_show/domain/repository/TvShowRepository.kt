@@ -3,7 +3,7 @@ package com.example.movieapp.feature_tv_show.domain.repository
 import androidx.paging.PagingData
 import com.example.movieapp.feature_tv_show.domain.model.tvshow.TvShow
 import com.example.movieapp.feature_tv_show.domain.model.tvshowdetail.TvShowDetail
-import com.example.movieapp.util.Recourse
+import com.example.movieapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface TvShowRepository {
@@ -20,5 +20,5 @@ interface TvShowRepository {
      *  @param id [Int] the id of the TvShow
      *  @return [Recourse]<[TvShowDetail]>
      */
-    suspend fun getTvShowDetail(id: Long): Recourse<TvShowDetail?>
+    suspend fun getTvShowDetail(id: Long): Resource<TvShowDetail?>
 }

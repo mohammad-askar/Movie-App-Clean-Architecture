@@ -40,7 +40,7 @@ fun TvShowDetailScreen(
     val isLoading by viewModel.isLoading
         .collectAsState()
 
-    val tvShowDetail by viewModel.tvShowState
+    val tvShowDetail by viewModel.tvShowDetailState
         .collectAsState()
 
     val screenHeight = LocalContext.current.resources.displayMetrics.heightPixels.dp /

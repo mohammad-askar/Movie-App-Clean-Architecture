@@ -8,25 +8,27 @@ import com.example.movieapp.feature_tv_show.data.repository.paging.TvShowRemoteP
 import com.example.movieapp.feature_tv_show.domain.model.tvshow.TvShow
 import com.example.movieapp.feature_tv_show.domain.model.tvshowdetail.TvShowDetail
 import com.example.movieapp.feature_tv_show.domain.repository.TvShowRepository
-import com.example.movieapp.util.Recourse
 import com.example.movieapp.util.RepositoryHelper
+import com.example.movieapp.util.Resource
 import kotlinx.coroutines.flow.Flow
 
-class TvShowRepositoryImp(private val api: Api) : TvShowRepository, RepositoryHelper() {
+class TvShowRepositoryImpl(private val api: Api) : TvShowRepository, RepositoryHelper() {
 
     override fun getTvShows(pageSize: Int): Flow<PagingData<TvShow>> {
-
         return Pager(
-            config = PagingConfig(pageSize),
-            pagingSourceFactory = { TvShowRemotePagingSource(api) }
+            config = PagingConfig(pageSize = pageSize),
+            pagingSourceFactory = { TvShowRemotePagingSource(api = api) }
         ).flow
     }
 
-    override suspend fun getTvShowDetail(id: Long): Recourse<TvShowDetail?> {
+    override suspend fun getTvShowDetail(id: Long): Resource<TvShowDetail?> {
         return when (val response = invokeApi { api.getTvShowDetail(id = id) }) {
-            is Recourse.Loading -> Recourse.Loading(data = null)
-            is Recourse.Success -> Recourse.Success(data = response.data?.toTvShowDetail())
-            is Recourse.Error -> Recourse.Error(data = null, error = response.error)
+            is Resource.Loading<*> -> Resource.Loading()
+            is Resource.Success<*> -> Resource.Success(data = response.data?.toTvShowDetail())
+            is Resource.Error<*> -> Resource.Error(error = response.error)
+            else -> {
+                Resource.Error(null)
+            }
         }
     }
 }

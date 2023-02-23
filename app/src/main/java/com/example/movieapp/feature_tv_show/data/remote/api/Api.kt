@@ -24,7 +24,7 @@ interface Api {
      * @return [TvShowDetailDto]
      */
 
-    @GET("show/{id}?embed=cast")
+    @GET("shows/{id}?embed=cast")
     suspend fun getTvShowDetail(
         @Path("id") id: Long
     ): TvShowDetailDto?

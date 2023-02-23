@@ -7,12 +7,12 @@ abstract class RepositoryHelper {
 
     suspend fun <T>invokeApi(
         apiCall: suspend () -> T
-    ): Recourse<T>{
+    ): Resource<T>{
         return withContext(Dispatchers.IO){
             try {
-                Recourse.Success(apiCall.invoke())
+                Resource.Success(apiCall.invoke())
             }catch (t: Throwable){
-                Recourse.Error(data = null, error = t)
+                Resource.Error(data = null, error = t)
             }
         }
     }

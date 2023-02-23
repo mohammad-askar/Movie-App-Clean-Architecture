@@ -3,7 +3,7 @@ package com.example.movieapp.di
 import android.app.Application
 import com.example.movieapp.application.TvmManiaApplication
 import com.example.movieapp.feature_tv_show.data.remote.api.Api
-import com.example.movieapp.feature_tv_show.data.repository.TvShowRepositoryImp
+import com.example.movieapp.feature_tv_show.data.repository.TvShowRepositoryImpl
 import com.example.movieapp.feature_tv_show.domain.repository.TvShowRepository
 import com.example.movieapp.feature_tv_show.domain.use_case.GetTvShowDetails
 import com.example.movieapp.feature_tv_show.domain.use_case.GetTvShows
@@ -37,7 +37,7 @@ class AppModule {
     @Singleton
     @Provides
     fun providesTvShowRepository(api: Api): TvShowRepository {
-        return TvShowRepositoryImp(api = api)
+        return TvShowRepositoryImpl(api = api)
     }
 
     @Singleton

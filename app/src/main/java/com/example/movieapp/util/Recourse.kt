@@ -1,11 +1,10 @@
 package com.example.movieapp.util
 
-sealed class Recourse<T>(
-    val data: T?,
+sealed class Resource<T>(
+    val data: T? = null,
     val error: Throwable? = null
 ) {
-    class Success<T>(data: T): Recourse<T>(data = data)
-    class Loading<T>(data: T?): Recourse<T>(data = data)
-    class Error<T>(data: T?, error: Throwable? = null): Recourse<T>(data = data, error = error)
-
+    class Success<T>(data: T): Resource<T>(data = data)
+    class Loading<T>(data: T? = null): Resource<T>(data = data)
+    class Error<T>(data: T? = null, error: Throwable? = null): Resource<T>(data = data, error = error)
 }
